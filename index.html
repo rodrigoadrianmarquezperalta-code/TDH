@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDAH | Comprender, Apoyar y Actuar</title>
+    <title>Alto a la Deforestación | Salvemos Nuestros Bosques</title>
     <style>
         :root {
-            --deep-blue: #1a3a5c;
-            --calm-teal: #2a9d8f;
-            --warm-coral: #e76f51;
-            --soft-yellow: #f4a261;
-            --light-lavender: #e9e4f0;
-            --creamy-white: #fefdfb;
-            --dark-text: #2c3e50;
-            --soft-gray: #f8f9fa;
-            --card-white: #ffffff;
-            --attention-orange: #f77f00;
+            --forest-dark: #1a3c25;
+            --forest-mid: #2d5a3f;
+            --leaf-green: #4caf50;
+            --earth-brown: #8b5e3c;
+            --sand: #f4e4c1;
+            --sky-blue: #d4eaf0;
+            --alert-red: #e74c3c;
+            --golden: #f0a500;
+            --white: #ffffff;
+            --soft-gray: #f5f5f5;
+            --text-dark: #2c3e50;
         }
 
         * {
@@ -25,10 +26,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', Tahoma, Geneva, sans-serif;
+            font-family: 'Verdana', 'Segoe UI', sans-serif;
             line-height: 1.7;
-            color: var(--dark-text);
-            background-color: var(--creamy-white);
+            color: var(--text-dark);
+            background-color: var(--soft-gray);
             font-size: 1.05rem;
         }
 
@@ -38,35 +39,38 @@
             padding: 0 25px;
         }
 
-        /* Banner superior */
-        .top-banner {
-            background: linear-gradient(90deg, #2a9d8f, #1a3a5c);
+        /* Banner superior de alerta */
+        .alert-banner {
+            background: var(--alert-red);
             color: white;
             text-align: center;
-            padding: 10px 20px;
-            font-size: 0.95rem;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 1rem;
             letter-spacing: 0.5px;
         }
-        .top-banner a {
-            color: #f4a261;
+        .alert-banner a {
+            color: #fff;
             font-weight: bold;
+            text-decoration: underline;
         }
 
-        /* Hero con formas geométricas */
-        .hero-section {
-            background: linear-gradient(160deg, #e9e4f0 0%, #f0e6ef 30%, #fce4d6 100%);
+        /* Hero con fondo de bosque SVG */
+        .hero-forest {
+            background: linear-gradient(180deg, #1a3c25 0%, #2d5a3f 60%, #3e7a56 100%);
+            color: white;
             padding: 0 20px;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-container {
+        .hero-inner {
             max-width: 1150px;
             margin: 0 auto;
-            padding: 70px 0 50px;
+            padding: 90px 0 60px;
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
             position: relative;
             z-index: 2;
@@ -76,215 +80,201 @@
             flex: 1 1 400px;
         }
         .hero-text h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 800;
-            color: #1a3a5c;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
             line-height: 1.2;
-            margin-bottom: 18px;
         }
         .hero-text h1 span {
-            color: #e76f51;
+            color: var(--golden);
             display: block;
-            font-size: 2rem;
-            font-weight: 600;
         }
         .hero-text p {
-            font-size: 1.15rem;
-            color: #444;
-            margin-bottom: 28px;
-            max-width: 500px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
         }
 
         .hero-svg {
             flex: 1 1 350px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
         }
 
         .btn {
             display: inline-block;
-            padding: 13px 28px;
-            border-radius: 30px;
-            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: bold;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 0.95rem;
+            letter-spacing: 0.5px;
             cursor: pointer;
             border: none;
-            margin: 4px;
-            letter-spacing: 0.4px;
         }
-        .btn-primary {
-            background-color: #2a9d8f;
+        .btn-green {
+            background-color: var(--leaf-green);
             color: white;
         }
-        .btn-primary:hover {
-            background-color: #218277;
+        .btn-green:hover {
+            background-color: #388e3c;
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(42,157,143,0.3);
-        }
-        .btn-coral {
-            background-color: #e76f51;
-            color: white;
-        }
-        .btn-coral:hover {
-            background-color: #c85a3f;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(231,111,81,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         .btn-outline {
             background: transparent;
-            border: 2px solid #1a3a5c;
-            color: #1a3a5c;
+            color: white;
+            border: 2px solid white;
         }
         .btn-outline:hover {
-            background: #1a3a5c;
+            background: white;
+            color: #1a3c25;
+        }
+        .btn-gold {
+            background-color: var(--golden);
+            color: #1a3c25;
+        }
+        .btn-gold:hover {
+            background-color: #e09600;
+        }
+        .btn-brown {
+            background-color: var(--earth-brown);
             color: white;
         }
+        .btn-brown:hover {
+            background-color: #6d4828;
+        }
 
-        /* Navegación */
+        /* Navegación con estilo natural */
         nav {
-            background-color: var(--card-white);
-            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            background-color: var(--white);
+            border-bottom: 3px solid var(--leaf-green);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
         }
         nav .container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 6px;
-            padding: 14px 25px;
+            gap: 8px;
+            padding: 15px 25px;
         }
         nav a {
             text-decoration: none;
-            color: #1a3a5c;
+            color: var(--forest-dark);
             font-weight: 600;
-            padding: 9px 17px;
-            border-radius: 25px;
+            padding: 10px 18px;
+            border-radius: 6px;
             transition: 0.3s;
-            font-size: 0.92rem;
+            font-size: 0.95rem;
         }
         nav a:hover {
-            background-color: #e9e4f0;
-            color: #1a3a5c;
+            background-color: var(--forest-dark);
+            color: white;
         }
 
         /* Secciones */
         section {
-            padding: 65px 0;
+            padding: 70px 0;
         }
-        .bg-white {
-            background-color: var(--card-white);
+        .section-light {
+            background-color: var(--white);
         }
-        .bg-lavender {
-            background-color: #faf8fc;
+        .section-sand {
+            background-color: #fdf8f0;
         }
 
         h2 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             text-align: center;
-            margin-bottom: 14px;
-            color: #1a3a5c;
+            margin-bottom: 15px;
+            color: var(--forest-dark);
             font-weight: 700;
         }
-        .section-intro {
+        .section-desc {
             text-align: center;
-            max-width: 680px;
-            margin: 0 auto 40px;
+            max-width: 700px;
+            margin: 0 auto 45px;
             color: #555;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
-        /* Tarjetas */
+        /* Grid de tarjetas */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .card {
             background: white;
-            border-radius: 20px;
-            padding: 30px 25px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
             transition: 0.3s ease;
-            border: 1px solid #f0e6ef;
-            text-align: center;
+            border: 1px solid #e8e8e0;
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 14px 32px rgba(0,0,0,0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
-        .card-icon {
-            font-size: 3.5rem;
-            margin-bottom: 16px;
+        .card-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: #f9f9f2;
         }
-        .card h3 {
-            color: #1a3a5c;
-            font-size: 1.35rem;
+        .card-body {
+            padding: 22px 25px;
+        }
+        .card-body h3 {
+            color: var(--forest-dark);
+            font-size: 1.4rem;
             margin-bottom: 10px;
         }
-        .card p {
+        .card-body p {
             color: #555;
         }
 
-        /* Lista de síntomas */
-        .symptom-list {
+        /* Datos en columnas */
+        .stats-row {
             display: flex;
             flex-wrap: wrap;
             gap: 25px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 25px;
         }
-        .symptom-item {
+        .stat-box {
             background: white;
+            padding: 30px 20px;
             border-radius: 16px;
-            padding: 22px 20px;
+            text-align: center;
             flex: 1 1 200px;
-            max-width: 260px;
-            text-align: center;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-            border-bottom: 4px solid #f4a261;
-            transition: 0.3s;
-        }
-        .symptom-item:hover {
-            border-bottom-color: #e76f51;
-        }
-        .symptom-emoji {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        /* Estadísticas */
-        .stats-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 22px;
-            justify-content: center;
-        }
-        .stat-card {
-            background: white;
-            padding: 28px 20px;
-            border-radius: 18px;
-            text-align: center;
-            flex: 1 1 180px;
-            max-width: 220px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-            border-top: 5px solid #2a9d8f;
+            max-width: 250px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--leaf-green);
         }
         .stat-number {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            color: #1a3a5c;
+            color: var(--forest-dark);
             display: block;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+            font-size: 0.95rem;
         }
 
         /* Recursos */
-        .resource-grid {
+        .resource-flex {
             display: flex;
             flex-wrap: wrap;
             gap: 25px;
@@ -292,56 +282,68 @@
         }
         .resource-card {
             background: white;
-            border-radius: 18px;
-            padding: 28px 22px;
+            border-radius: 16px;
+            padding: 30px 25px;
             text-align: center;
-            flex: 1 1 240px;
-            max-width: 300px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.05);
-            border-left: 5px solid #2a9d8f;
+            flex: 1 1 260px;
+            max-width: 320px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--leaf-green);
             transition: 0.3s;
         }
         .resource-card:hover {
-            border-left-color: #e76f51;
+            border-top-color: var(--golden);
             transform: scale(1.02);
         }
+        .resource-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
         .resource-card h4 {
-            color: #1a3a5c;
-            margin: 10px 0;
+            color: var(--forest-dark);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
 
         /* Cita */
-        .quote-box {
-            background: linear-gradient(135deg, #1a3a5c, #2a4a6f);
+        .quote-block {
+            background: linear-gradient(135deg, #2d5a3f, #1a3c25);
             color: white;
-            padding: 40px 30px;
-            border-radius: 22px;
+            padding: 45px 30px;
+            border-radius: 20px;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
-            margin: 35px 0;
+            margin: 40px 0;
+            position: relative;
+        }
+        .quote-block::before {
+            content: "🌿";
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
         }
 
         /* Footer */
         footer {
-            background-color: #1a3a5c;
+            background-color: var(--forest-dark);
             color: #ddd;
             text-align: center;
             padding: 40px 25px;
         }
         footer a {
-            color: #f4a261;
+            color: var(--golden);
             text-decoration: none;
         }
 
         @media (max-width: 768px) {
             .hero-text h1 {
-                font-size: 2.2rem;
+                font-size: 2.3rem;
             }
-            .hero-container {
+            .hero-inner {
+                padding: 50px 0 40px;
                 flex-direction: column;
                 text-align: center;
-                padding: 40px 0 30px;
             }
             nav .container {
                 flex-direction: column;
@@ -352,44 +354,52 @@
 </head>
 <body>
 
-    <!-- Banner superior -->
-    <div class="top-banner">
-        🧠 El TDAH no es falta de voluntad, es una condición neurobiológica real · 
-        <a href="#recursos">Busca apoyo aquí</a>
+    <!-- Banner de alerta -->
+    <div class="alert-banner">
+        🌳 CADA SEGUNDO PERDEMOS UN ÁREA DE BOSQUE DEL TAMAÑO DE UNA CANCHA DE FÚTBOL · 
+        <a href="#recursos">Actúa Ahora</a>
     </div>
 
-    <!-- Hero -->
-    <header class="hero-section">
-        <div class="hero-container">
+    <!-- Hero con SVG de bosque -->
+    <header class="hero-forest">
+        <div class="hero-inner">
             <div class="hero-text">
-                <h1>TDAH <span>Trastorno por Déficit de Atención e Hiperactividad</span></h1>
-                <p>Afecta a niños, adolescentes y adultos en todo el mundo. Con diagnóstico adecuado, tratamiento y apoyo, las personas con TDAH pueden desarrollar todo su potencial.</p>
-                <div>
-                    <a href="#sintomas" class="btn btn-primary">Síntomas</a>
-                    <a href="#recursos" class="btn btn-coral">Centros de Ayuda</a>
+                <h1>Deforestación<span>Una Crisis Silenciosa</span></h1>
+                <p>Los bosques son los pulmones de nuestro planeta. Cada año desaparecen 10 millones de hectáreas de árboles. Es hora de informarse y tomar acción.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#causas" class="btn btn-outline">Causas</a>
+                    <a href="#recursos" class="btn btn-gold">Cómo Ayudar</a>
                 </div>
             </div>
             <div class="hero-svg">
-                <svg width="280" height="260" viewBox="0 0 280 260" fill="none">
-                    <!-- Cerebro simplificado -->
-                    <ellipse cx="140" cy="110" rx="90" ry="70" fill="#e9e4f0" stroke="#1a3a5c" stroke-width="3"/>
-                    <!-- Hemisferio izquierdo -->
-                    <path d="M95 110 Q95 50 140 50 Q185 50 185 110" fill="#d5c6e0" opacity="0.7"/>
-                    <!-- Hemisferio derecho -->
-                    <path d="M95 110 Q95 170 140 170 Q185 170 185 110" fill="#f0e6ef" opacity="0.7"/>
-                    <!-- Neuronas/estrellas -->
-                    <circle cx="115" cy="85" r="8" fill="#f4a261"/>
-                    <circle cx="165" cy="95" r="8" fill="#e76f51"/>
-                    <circle cx="140" cy="130" r="8" fill="#2a9d8f"/>
-                    <circle cx="100" cy="120" r="6" fill="#f4a261" opacity="0.6"/>
-                    <circle cx="175" cy="75" r="6" fill="#e76f51" opacity="0.6"/>
-                    <!-- Líneas de conexión -->
-                    <line x1="115" y1="85" x2="165" y2="95" stroke="#1a3a5c" stroke-width="1.5" opacity="0.5"/>
-                    <line x1="115" y1="85" x2="140" y2="130" stroke="#1a3a5c" stroke-width="1.5" opacity="0.5"/>
-                    <line x1="165" y1="95" x2="140" y2="130" stroke="#1a3a5c" stroke-width="1.5" opacity="0.5"/>
-                    <!-- Texto -->
-                    <text x="140" y="210" text-anchor="middle" fill="#1a3a5c" font-size="14" font-weight="bold">Cerebro TDAH</text>
-                    <text x="140" y="230" text-anchor="middle" fill="#666" font-size="11">Funciona diferente, no peor</text>
+                <svg width="300" height="280" viewBox="0 0 300 280" fill="none">
+                    <!-- Cielo -->
+                    <rect width="300" height="280" fill="transparent"/>
+                    <!-- Sol -->
+                    <circle cx="250" cy="50" r="30" fill="#f0a500" opacity="0.9"/>
+                    <!-- Montañas fondo -->
+                    <polygon points="0,200 80,100 160,200" fill="#1a3c25" opacity="0.6"/>
+                    <polygon points="120,200 200,120 300,200" fill="#1a3c25" opacity="0.5"/>
+                    <!-- Suelo -->
+                    <rect x="0" y="200" width="300" height="80" fill="#3e7a56"/>
+                    <!-- Tronco árbol 1 -->
+                    <rect x="60" y="100" width="16" height="120" rx="4" fill="#8b5e3c"/>
+                    <circle cx="68" cy="85" r="40" fill="#4caf50"/>
+                    <circle cx="50" cy="65" r="30" fill="#388e3c"/>
+                    <circle cx="86" cy="70" r="28" fill="#2e7d32"/>
+                    <!-- Tronco árbol 2 -->
+                    <rect x="140" y="110" width="14" height="110" rx="4" fill="#8b5e3c"/>
+                    <circle cx="147" cy="95" r="38" fill="#4caf50"/>
+                    <circle cx="130" cy="78" r="28" fill="#388e3c"/>
+                    <circle cx="164" cy="80" r="26" fill="#2e7d32"/>
+                    <!-- Tronco árbol 3 -->
+                    <rect x="210" y="120" width="12" height="100" rx="4" fill="#8b5e3c"/>
+                    <circle cx="216" cy="108" r="32" fill="#4caf50"/>
+                    <circle cx="202" cy="95" r="24" fill="#388e3c"/>
+                    <circle cx="230" cy="98" r="22" fill="#2e7d32"/>
+                    <!-- Tronco caído (deforestación) -->
+                    <rect x="20" y="210" width="90" height="14" rx="6" fill="#6d4828" transform="rotate(-5, 65, 217)"/>
+                    <text x="30" y="240" fill="white" font-size="12" opacity="0.8">⚠️ Árbol talado</text>
                 </svg>
             </div>
         </div>
@@ -399,187 +409,247 @@
     <nav>
         <div class="container">
             <a href="#que-es">¿Qué es?</a>
-            <a href="#sintomas">Síntomas</a>
             <a href="#causas">Causas</a>
+            <a href="#consecuencias">Consecuencias</a>
             <a href="#datos">Datos</a>
-            <a href="#tratamiento">Tratamiento</a>
+            <a href="#soluciones">Soluciones</a>
             <a href="#recursos">Ayuda</a>
         </div>
     </nav>
 
     <main>
-        <!-- ¿Qué es el TDAH? -->
-        <section id="que-es" class="bg-white">
+        <!-- ¿Qué es la deforestación? -->
+        <section id="que-es" class="section-light">
             <div class="container">
-                <h2>¿Qué es el TDAH?</h2>
-                <p class="section-intro">El Trastorno por Déficit de Atención e Hiperactividad (TDAH) es una condición del neurodesarrollo que afecta la capacidad de atención, el control de impulsos y el nivel de actividad. No es una "mala conducta" ni "falta de disciplina".</p>
+                <h2>¿Qué es la Deforestación?</h2>
+                <p class="section-desc">La deforestación es la eliminación masiva de árboles y vegetación forestal, generalmente causada por la actividad humana. No es solo "cortar árboles": es destruir ecosistemas completos.</p>
                 <div class="card-grid">
                     <div class="card">
-                        <div class="card-icon">🧬</div>
-                        <h3>Base Neurobiológica</h3>
-                        <p>El TDAH tiene un fuerte componente genético y está relacionado con diferencias en la química y estructura cerebral, especialmente en áreas que regulan la atención y el autocontrol.</p>
+                        <div class="card-img" style="background:#e8f5e9;">
+                            <svg width="150" height="150" viewBox="0 0 150 150">
+                                <circle cx="75" cy="75" r="65" fill="#c8e6c9"/>
+                                <rect x="60" y="40" width="12" height="70" rx="3" fill="#8b5e3c"/>
+                                <circle cx="66" cy="45" r="30" fill="#4caf50"/>
+                                <circle cx="52" cy="35" r="22" fill="#388e3c"/>
+                                <circle cx="80" cy="38" r="20" fill="#2e7d32"/>
+                                <text x="75" y="130" text-anchor="middle" fill="#1a3c25" font-size="11" font-weight="bold">Bosque Vivo</text>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Pérdida de Cobertura Forestal</h3>
+                            <p>Se estima que el planeta ha perdido casi la mitad de sus bosques originales. La tasa actual de deforestación equivale a 27 campos de fútbol por minuto.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <div class="card-icon">👶</div>
-                        <h3>Aparece en la Infancia</h3>
-                        <p>Los síntomas suelen manifestarse antes de los 12 años, aunque muchas personas no son diagnosticadas hasta la edad adulta. Acompaña a la persona durante toda la vida.</p>
+                        <div class="card-img" style="background:#fbe9e7;">
+                            <svg width="150" height="150" viewBox="0 0 150 150">
+                                <rect width="150" height="150" fill="#f4e4c1"/>
+                                <rect x="20" y="90" width="110" height="14" rx="5" fill="#8b5e3c"/>
+                                <rect x="40" y="80" width="80" height="12" rx="4" fill="#6d4828"/>
+                                <circle cx="75" cy="100" r="8" fill="#e74c3c"/>
+                                <line x1="75" y1="92" x2="75" y2="108" stroke="white" stroke-width="2"/>
+                                <line x1="67" y1="100" x2="83" y2="100" stroke="white" stroke-width="2"/>
+                                <text x="75" y="130" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">Área Deforestada</text>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Degradación del Suelo</h3>
+                            <p>Sin árboles, el suelo pierde nutrientes, se erosiona y se vuelve infértil. La tierra que antes sostenía vida se convierte en desierto.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <div class="card-icon">💪</div>
-                        <h3>No Define a la Persona</h3>
-                        <p>Con el apoyo adecuado, las personas con TDAH pueden destacar en creatividad, energía, empatía y capacidad de pensamiento divergente. Muchos emprendedores y artistas tienen TDAH.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Síntomas -->
-        <section id="sintomas" class="bg-lavender">
-            <div class="container">
-                <h2>Síntomas Principales</h2>
-                <p class="section-intro">El TDAH se manifiesta de forma diferente en cada persona. Se reconocen tres áreas principales de síntomas:</p>
-                <div class="symptom-list">
-                    <div class="symptom-item">
-                        <span class="symptom-emoji">🔍</span>
-                        <h3>Inatención</h3>
-                        <p>Dificultad para mantener el foco, se distrae con facilidad, olvida tareas, pierde objetos, parece no escuchar.</p>
-                    </div>
-                    <div class="symptom-item">
-                        <span class="symptom-emoji">⚡</span>
-                        <h3>Hiperactividad</h3>
-                        <p>Inquietud constante, dificultad para estar quieto, habla excesiva, sensación interna de agitación o "motor encendido".</p>
-                    </div>
-                    <div class="symptom-item">
-                        <span class="symptom-emoji">🚦</span>
-                        <h3>Impulsividad</h3>
-                        <p>Actuar sin pensar, interrumpir conversaciones, dificultad para esperar turnos, tomar decisiones apresuradas.</p>
+                        <div class="card-img" style="background:#fff3e0;">
+                            <svg width="150" height="150" viewBox="0 0 150 150">
+                                <circle cx="75" cy="75" r="65" fill="#ffe0b2"/>
+                                <rect x="72" y="50" width="6" height="60" rx="2" fill="#8b5e3c"/>
+                                <circle cx="75" cy="50" r="18" fill="#f0a500"/>
+                                <circle cx="68" cy="45" r="14" fill="#e09600"/>
+                                <circle cx="82" cy="46" r="13" fill="#c68400"/>
+                                <text x="75" y="130" text-anchor="middle" fill="#5d4037" font-size="11" font-weight="bold">Último Árbol</text>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Pérdida de Biodiversidad</h3>
+                            <p>Los bosques albergan el 80% de la biodiversidad terrestre. Cada hectárea perdida significa la extinción de innumerables especies.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Causas -->
-        <section id="causas" class="bg-white">
+        <section id="causas" class="section-sand">
             <div class="container">
-                <h2>¿Qué Causa el TDAH?</h2>
+                <h2>Principales Causas</h2>
+                <p class="section-desc">La deforestación no ocurre por casualidad. Estas son las actividades humanas que más contribuyen a la destrucción de los bosques.</p>
                 <div class="card-grid">
                     <div class="card">
-                        <div class="card-icon">🧬</div>
-                        <h3>Genética</h3>
-                        <p>El TDAH es altamente hereditario. Si un padre tiene TDAH, la probabilidad de que su hijo también lo tenga es significativamente mayor.</p>
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 4rem;">🐄</span>
+                            <h3>Ganadería Extensiva</h3>
+                            <p>Responsable del 40% de la deforestación mundial. Se talan bosques enteros para crear pastizales para el ganado.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🧠</div>
-                        <h3>Diferencias Cerebrales</h3>
-                        <p>Estudios de neuroimagen muestran diferencias en el tamaño y actividad de regiones cerebrales como la corteza prefrontal, encargada de las funciones ejecutivas.</p>
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 4rem;">🌾</span>
+                            <h3>Agricultura Industrial</h3>
+                            <p>Cultivos como soja, palma aceitera y maíz requieren enormes extensiones de tierra que antes eran bosques.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🤰</div>
-                        <h3>Factores Prenatales</h3>
-                        <p>Exposición a toxinas durante el embarazo (alcohol, tabaco), bajo peso al nacer o complicaciones en el parto pueden aumentar el riesgo.</p>
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 4rem;">🪵</span>
+                            <h3>Tala Ilegal</h3>
+                            <p>La extracción no regulada de madera para muebles, papel y construcción destruye millones de hectáreas anualmente.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="quote-box">
-                    "El TDAH no es un trastorno de 'no saber qué hacer', es un trastorno de 'no hacer lo que sabes'." — Dr. Russell Barkley
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 4rem;">⛏️</span>
+                            <h3>Minería</h3>
+                            <p>La extracción de minerales y combustibles fósiles devasta selvas enteras, contaminando además ríos y suelos.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Datos y estadísticas -->
-        <section id="datos" class="bg-lavender">
+        <!-- Consecuencias -->
+        <section id="consecuencias" class="section-light">
             <div class="container">
-                <h2>El TDAH en Cifras</h2>
+                <h2>Consecuencias de la Deforestación</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-img" style="background:#ffebee;">
+                            <span style="font-size: 5rem;">🌡️</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Cambio Climático</h3>
+                            <p>Los árboles absorben CO₂. Al talarlos, se libera ese carbono a la atmósfera, acelerando el calentamiento global. La deforestación causa el 15% de las emisiones globales.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img" style="background:#e3f2fd;">
+                            <span style="font-size: 5rem;">💧</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Alteración del Ciclo del Agua</h3>
+                            <p>Los bosques regulan las lluvias y mantienen los acuíferos. Sin ellos, aumentan las sequías e inundaciones.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img" style="background:#f3e5f5;">
+                            <span style="font-size: 5rem;">🦜</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Extinción de Especies</h3>
+                            <p>Se estima que cada día se extinguen 150 especies por la pérdida de hábitat. Animales como el jaguar, el orangután y miles más están en peligro crítico.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Datos impactantes -->
+        <section id="datos" class="section-sand">
+            <div class="container">
+                <h2>Datos que Debes Conocer</h2>
                 <div class="stats-row">
-                    <div class="stat-card">
-                        <span class="stat-number">5-7%</span>
-                        <span class="stat-label">de la población infantil mundial tiene TDAH</span>
+                    <div class="stat-box">
+                        <span class="stat-number">10M</span>
+                        <span class="stat-label">hectáreas perdidas por año en el mundo</span>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number">2.5%</span>
-                        <span class="stat-label">de los adultos viven con TDAH a nivel global</span>
+                    <div class="stat-box">
+                        <span class="stat-number">80%</span>
+                        <span class="stat-label">de la biodiversidad terrestre vive en bosques</span>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number">3:1</span>
-                        <span class="stat-label">proporción de diagnóstico niños vs niñas (infradiagnóstico femenino)</span>
+                    <div class="stat-box">
+                        <span class="stat-number">15%</span>
+                        <span class="stat-label">de las emisiones de CO₂ vienen de la deforestación</span>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number">70%</span>
-                        <span class="stat-label">de los casos responden positivamente al tratamiento</span>
+                    <div class="stat-box">
+                        <span class="stat-number">1.6M</span>
+                        <span class="stat-label">millones de personas dependen directamente de los bosques</span>
                     </div>
+                </div>
+                <div class="quote-block">
+                    "Un bosque no es solo un conjunto de árboles. Es una comunidad de vida que sostiene el equilibrio del planeta. Cuando cae un bosque, cae una parte de nuestro futuro."
                 </div>
             </div>
         </section>
 
-        <!-- Tratamiento -->
-        <section id="tratamiento" class="bg-white">
+        <!-- Soluciones -->
+        <section id="soluciones" class="section-light">
             <div class="container">
-                <h2>Tratamiento y Manejo</h2>
+                <h2>Soluciones: ¿Qué Podemos Hacer?</h2>
                 <div class="card-grid">
                     <div class="card">
-                        <div class="card-icon">💊</div>
-                        <h3>Medicación</h3>
-                        <p>Fármacos estimulantes y no estimulantes que ayudan a regular los neurotransmisores. Siempre deben ser recetados y supervisados por un médico especialista.</p>
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 4rem;">🌱</span>
+                            <h3>Reforestación</h3>
+                            <p>Participa en jornadas de plantación de árboles nativos. Un solo árbol puede absorber hasta 150 kg de CO₂ al año.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🗣️</div>
-                        <h3>Terapia Psicológica</h3>
-                        <p>La terapia cognitivo-conductual (TCC) ayuda a desarrollar estrategias de organización, manejo del tiempo y control emocional.</p>
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 4rem;">🛒</span>
+                            <h3>Consumo Responsable</h3>
+                            <p>Elige productos con certificación FSC (madera sostenible) y evita aquellos que provienen de zonas deforestadas.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🏫</div>
-                        <h3>Apoyo Educativo</h3>
-                        <p>Adaptaciones escolares como más tiempo para exámenes, ubicación preferente en el aula y metodologías personalizadas marcan una gran diferencia.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">👨‍👩‍👧</div>
-                        <h3>Psicoeducación Familiar</h3>
-                        <p>Informar a la familia sobre el TDAH reduce el estigma, mejora la comunicación y crea un entorno de apoyo en el hogar.</p>
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 4rem;">📢</span>
+                            <h3>Denuncia y Activismo</h3>
+                            <p>Reporta talas ilegales, firma peticiones y exige a gobiernos y empresas políticas de cero deforestación.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Recursos de ayuda -->
-        <section id="recursos" class="bg-lavender">
+        <!-- Recursos de ayuda y enlaces -->
+        <section id="recursos" class="section-sand">
             <div class="container">
-                <h2>Organizaciones y Recursos de Apoyo</h2>
-                <p class="section-intro">Si tú o un ser querido tiene TDAH, estas organizaciones ofrecen información, diagnóstico, tratamiento y grupos de apoyo.</p>
-                <div class="resource-grid">
+                <h2>Organizaciones y Recursos de Ayuda</h2>
+                <p class="section-desc">Estas organizaciones trabajan activamente para proteger los bosques. Puedes donar, ser voluntario o difundir su labor.</p>
+                <div class="resource-flex">
                     <div class="resource-card">
-                        <span style="font-size: 2.5rem;">🏥</span>
-                        <h4>CHADD (Children and Adults with ADHD)</h4>
-                        <p>Organización líder en EE.UU. con recursos educativos y grupos de apoyo.</p>
-                        <a href="https://chadd.org/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">Visitar CHADD</a>
+                        <div class="resource-icon">🌍</div>
+                        <h4>Greenpeace</h4>
+                        <p>Campañas globales contra la deforestación y el cambio climático.</p>
+                        <a href="https://www.greenpeace.org/es/" target="_blank" rel="noopener" class="btn btn-green" style="margin-top: 10px;">Visitar</a>
                     </div>
                     <div class="resource-card">
-                        <span style="font-size: 2.5rem;">🌎</span>
-                        <h4>ADHD Europe</h4>
-                        <p>Red de organizaciones europeas dedicadas al TDAH. Información en varios idiomas.</p>
-                        <a href="https://www.adhdeurope.eu/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">ADHD Europe</a>
+                        <div class="resource-icon">🐼</div>
+                        <h4>WWF (World Wildlife Fund)</h4>
+                        <p>Protección de bosques y especies amenazadas en todo el mundo.</p>
+                        <a href="https://www.wwf.org/" target="_blank" rel="noopener" class="btn btn-green" style="margin-top: 10px;">Visitar</a>
                     </div>
                     <div class="resource-card">
-                        <span style="font-size: 2.5rem;">🇲🇽</span>
-                        <h4>ProyectoDAH (México)</h4>
-                        <p>Asociación mexicana que ofrece diagnóstico, terapias y talleres para familias.</p>
-                        <a href="https://www.proyectodah.org.mx/" target="_blank" rel="noopener" class="btn btn-coral" style="margin-top:8px;">ProyectoDAH</a>
+                        <div class="resource-icon">🌳</div>
+                        <h4>Reforestamos México</h4>
+                        <p>Organización dedicada a la reforestación y conservación de bosques mexicanos.</p>
+                        <a href="https://www.reforestamosmexico.org/" target="_blank" rel="noopener" class="btn btn-green" style="margin-top: 10px;">Participar</a>
                     </div>
                     <div class="resource-card">
-                        <span style="font-size: 2.5rem;">📞</span>
-                        <h4>Línea de Atención Psicológica</h4>
-                        <p>En México: Línea de la Vida 800 911 2000. Atención 24/7 para crisis emocionales.</p>
-                        <a href="tel:8009112000" class="btn btn-coral" style="margin-top:8px;">Llamar Ahora</a>
+                        <div class="resource-icon">🛰️</div>
+                        <h4>Global Forest Watch</h4>
+                        <p>Monitoreo satelital en tiempo real de la deforestación mundial.</p>
+                        <a href="https://www.globalforestwatch.org/" target="_blank" rel="noopener" class="btn btn-green" style="margin-top: 10px;">Explorar Mapa</a>
                     </div>
                     <div class="resource-card">
-                        <span style="font-size: 2.5rem;">📚</span>
-                        <h4>Fundación CADAH (España)</h4>
-                        <p>Información, formación y recursos sobre TDAH en español para toda la comunidad hispanohablante.</p>
-                        <a href="https://www.fundacioncadah.org/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">Fundación CADAH</a>
+                        <div class="resource-icon">🌎</div>
+                        <h4>Rainforest Alliance</h4>
+                        <p>Certificación de productos sostenibles y protección de selvas tropicales.</p>
+                        <a href="https://www.rainforest-alliance.org/" target="_blank" rel="noopener" class="btn btn-green" style="margin-top: 10px;">Conocer Más</a>
                     </div>
                     <div class="resource-card">
-                        <span style="font-size: 2.5rem;">🧑‍⚕️</span>
-                        <h4>Directorio de Especialistas</h4>
-                        <p>Encuentra psiquiatras y psicólogos especializados en TDAH cerca de ti.</p>
-                        <a href="https://www.psychologytoday.com/us/therapists/adhd" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">Buscar Especialista</a>
+                        <div class="resource-icon">📋</div>
+                        <h4>PROFEPA (México)</h4>
+                        <p>Denuncia talas ilegales y delitos ambientales ante la autoridad federal.</p>
+                        <a href="https://www.gob.mx/profepa" target="_blank" rel="noopener" class="btn btn-green" style="margin-top: 10px;">Denunciar</a>
                     </div>
                 </div>
             </div>
@@ -588,12 +658,12 @@
 
     <footer>
         <div class="container">
-            <p style="font-size: 1.2rem;">🧠 El TDAH es una forma diferente de procesar el mundo. Con comprensión y apoyo, cada persona puede brillar.</p>
-            <p style="margin-top: 18px; font-size: 0.9rem; opacity: 0.8;">Página informativa sin fines de lucro. Contenido basado en fuentes de la OMS, APA y asociaciones internacionales de TDAH.</p>
-            <p style="margin-top: 12px;">
-                <a href="https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders">OMS Salud Mental</a> · 
-                <a href="https://www.psychiatry.org/patients-families/adhd">APA - TDAH</a> · 
-                <a href="https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-deficit-de-atencion-e-hiperactividad">NIMH en Español</a>
+            <p style="font-size: 1.2rem;">🌳 Cada árbol cuenta. Cada acción importa. El futuro de los bosques está en nuestras manos.</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Página educativa sin fines de lucro. Datos basados en informes de la FAO, ONU y organizaciones ambientales internacionales.</p>
+            <p style="margin-top: 10px;">
+                <a href="https://www.fao.org/forestry/es/">FAO Forestal</a> · 
+                <a href="https://www.unep.org/es">PNUMA</a> · 
+                <a href="https://www.worldwildlife.org/descubre-wwf/historias/deforestacion">WWF Deforestación</a>
             </p>
         </div>
     </footer>
